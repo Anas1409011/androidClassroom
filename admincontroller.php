@@ -19,9 +19,8 @@ class admincontroller extends Controller
 
     public function allproducts_page1(){
     $all_products = DB::table('stock_data')->offset(0)->limit(15)->get();
-   // $all_products = DB::select('select * from stock_data');
     return view('admin.admin_all_products',['all_products'=>$all_products]);
-	 }
+    }
 
     public function allproducts_page2(){
     $all_products = DB::table('stock_data')->offset(15)->limit(15)->get();
@@ -45,13 +44,7 @@ class admincontroller extends Controller
 
    public function edit_product($product_id){
       $product_info=DB::select('select * from products where product_id=?',[$product_id]);
-      // echo "</pre>";
-      // print_r($contact_info) ;
-      // $manage_product=view('edit_product')
-      //           ->with('all_product_info',$product_info);
-    // return view('admin.edit_product');
     return view('admin.edit_product',['product_info'=>$product_info]);
-                // ->with('admin.edit_product',$manage_product);
     }
 
        public function update_product(Request $request,$product_id){
